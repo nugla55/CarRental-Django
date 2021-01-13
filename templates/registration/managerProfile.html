@@ -1,0 +1,123 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+    <style>
+        .profile-pic {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+
+        .car-pic {
+            max-width: 50px;
+            max-height: 50px;
+            margin: 0 auto;
+        }
+    </style>
+
+
+    <div class="container pt-3 pb-3">
+
+        <div class="row">
+                <div class="col-md-3">
+                    <div class="card card-body" style="background-color: mediumpurple">
+                        <a class="btn btn-warning" href="{% url 'home' %}"> &#8592; Back to Home Page</a>
+                        <hr>
+                        <h3 style="text-align: center">Account Settings</h3>
+                        <hr>
+                        <img class="profile-pic" src="{{ request.user.visitor.profile_pic.url }}"
+                             style="border-radius: 100%; background-color: white">
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <div class="card card-body">
+                        <form method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                            <label for="" style="margin-left: 7% ;display:inline-block">User Name :</label>
+                            <p style="margin-left: 8% ; display: inline-block">{{ request.user.username }}</p>
+                            <br>
+                        <label for="" style="margin-left: 10% ;display:inline-block">Email :</label>
+                            <p style="margin-left: 10% ; display: inline-block">{{ request.user.email }}</p>
+
+                        {% for i in form %}
+                            <div class="w-100" style="height: 50px">
+
+
+                                <div class="w-25 inline" style="text-align: center">
+                                    {{ i.label }}
+                                </div>
+
+
+                                <div class="w-70 inline">
+                                    {{ i }}
+                                </div>
+
+
+                            </div>
+
+                        {% endfor %}
+
+
+                            <div class="w-45">
+                                <input class="btn btn-primary mt-3" style="float: right" type="submit" name="Update Information" value="Change">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        <div class="container" style="overflow:auto">
+        {% for branch  in branches %}
+
+            <h1>{{ branch.place.capitalize}} Branch</h1>
+            <h3>Cars</h3>
+            <table class="table w-100">
+            <thead>
+            <tr>
+                <th scope="col">image</th>
+                <th scope="col">brand</th>
+                <th scope="col">model</th>
+                <th scope="col">gearType</th>
+                <th scope="col">fuelType</th>
+                <th scope="col">isReserved</th>
+                <th scope="col">isActive</th>
+                <th scope="col">buyingDate</th>
+                <th scope="col">reservations</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for car in branch.car_set.all %}
+                <tr>
+                    <td><img class="car-pic" src="{{ car.image.url }}"></td>
+                    <td>{{ car.brand }}</td>
+                    <td>{{ car.model }}</td>
+                    <td>{{ car.gearType }}</td>
+                    <td>{{ car.fuelType }}</td>
+                    <td>{{ car.isReserved }}</td>
+                    {% if car.isActive == True %}
+                        <td><i class="fa fa-check" style="background-color: #93c47d; border-radius: 100%"></i></td>
+                    {% else %}
+                        <td><i class="fa fa-times" style="background-color: #e06666; border-radius: 100%"></i></td>
+                    {% endif %}
+                    <td>{{ car.buyingDate }}</td>
+                    <td><a href="/reservations/reservationscar/{{ car.id }}" class="btn btn-success fa fa-list"></a></td>
+
+                </tr>
+
+
+            {% endfor %}
+            </tbody>
+            </table>
+                <br>
+        {% endfor %}
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

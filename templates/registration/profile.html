@@ -1,0 +1,106 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+    <style>
+        .profile-pic {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+    </style>
+
+    <div class="container pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-body" style="background-color: mediumpurple">
+                    <a class="btn btn-warning" href="{% url 'home' %}"> &#8592; Back to Home Page</a>
+                    <hr>
+                    <h3 style="text-align: center">Account Settings</h3>
+                    <hr>
+                    <img class="profile-pic" src="{{ request.user.visitor.profile_pic.url }}"
+                         style="border-radius: 100%; background-color: white">
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="card card-body">
+                    <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for i in form %}
+                        <div class="w-100" style="height: 50px">
+
+
+                            <div class="w-25 inline" style="text-align: center">
+                                {{ i.label }}
+                            </div>
+
+
+                            <div class="w-70 inline">
+                                {{ i }}
+                            </div>
+
+
+                        </div>
+
+                    {% endfor %}
+
+
+                        <div class="w-45">
+                            <input class="btn btn-primary mt-3" style="float: right" type="submit" name="Update Information" value="Change">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <table class="table mt-3" style="overflow: auto">
+            <thead>
+            <tr>
+                <th scope="col">Creation Date</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Delivery Date</th>
+                <th scope="col">Car</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.reservationDate }}</td>
+                    <td>{{ reservation.receiveDate }}</td>
+                    <td>{{ reservation.deliveryDate }}</td>
+                    <td>{{ reservation.car }}</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+
+
+    <script>
+
+		var form_fields = document.getElementsByTagName('p')
+		form_fields[1].placeholder='Username..';
+		form_fields[2].placeholder='First Name..';
+		form_fields[3].placeholder='Last Name..';
+		form_fields[4].placeholder='Email..';
+		form_fields[5].placeholder='Enter password...';
+		form_fields[6].placeholder='Re-enter Password...';
+
+
+		for (var field in form_fields){
+			form_fields[field].className += ' form-control'
+		}
+	</script>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+
+
+{% block content %}
+
+    <div class="container pt-3">
+        <div class="header-bar"><h3>{{ car.brand }} {{ car.model }}</h3></div>
+
+        <table class="table mt-3" style="background-color: #fff">
+            <thead style="background-color: #cccccc">
+                <tr>
+                    <th scope="col">Reservation Date</th>
+                    <th scope="col">Pick-up Date</th>
+                    <th scope="col">Return Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in  car.reservations_set.all %}
+                    <tr>
+                        <td>{{ reservation.reservationDate }}</td>
+                        <td>{{ reservation.receiveDate }}</td>
+                        <td>{{ reservation.deliveryDate }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+    <div class="container">
+
+    <br>
+    <br>
+
+
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for branches in branches %}
+                <div class="col">
+                    <div class="card shadow-sm" >
+                        <div class="card-header" style="background-color: mediumpurple">{{ branches.place }}</div>
+                        <div class="card-body">
+                            <ul class="no-bullets">
+                                <li><p class="fa fa-map-marker"> <b>Address:</b> {{ branches.adress }}</p></li>
+                                <li><p class="fa fa-phone"> <b>Phone:</b> <a href="#">{{ branches.phone }}</a></p></li>
+                                <li><p class="fa fa-mail-forward"> <b>Mail:</b> <a href="http://mail.google.com">{{ branches.mail }}</a></p></li>
+                                <li><p class="fa fa-fax"> <b>Fax:</b> {{ branches.fax }}</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+    <div class="container pt-3 pb-3">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 w-100 " style="background-color: mediumpurple">
+                        <h1>Filter</h1>
+
+                        <div class="form-group w-100 " style="height: 60px;">
+                            <label for="gr">dsaasd type:</label><br>
+                            <select type="text" id="gr" name="gr" class="w-100" style="height: 35px">
+                                <option selected></option>
+                                <option>ads</option>
+                                <option>Maqwenuel</option>
+                                <option>hgjgh</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group w-100 " style="height: 60px;">
+                            <label for="gr">Gear Type:</label><br>
+                            <select type="text" id="gr" name="gr" class="w-100" style="height: 35px">
+                                <option selected></option>
+                                <option>Automatic</option>
+                                <option>Manuel</option>
+                                <option>Semi-Automatic</option>
+                            </select>
+                        </div>
+
+                         <div class="form-group w-100" style="height: 60px;">
+                        <label for="fl">Fuel Type:</label><br>
+                             <select type="text" id="fl" name="fl" class="w-100" style="height: 35px">
+                                <option selected></option>
+                                 <option>Petrol</option>
+                                 <option>Diesel</option>
+                                 <option>Electric</option>
+                             </select>
+                         </div>
+
+                         <div class="form-group w-100" style="height: 60px;">
+                            <label for="brand">Brand:</label><br>
+                            <input type="text" id="brand" name="brand" value="" style="height: 35px" class="w-100">
+                        </div>
+
+                        <div class="form-group w-100" style="height: 60px;">
+                            <label for="capacity">Capacity :</label>
+                            <input type="number" id="capacity" name="capacity" min="0" style="height: 35px" class="w-100">
+                        </div>
+
+                        <div class="form-group w-100" style="height: 60px;">
+                            <label for="min">Min Value :</label>
+                            <input type="number" id="min" name="min" min="0" style="height: 35px" class="w-100">
+                        </div>
+
+                         <div class="form-group w-100" style="height: 60px;">
+                            <label for="max">Max Value :</label>
+                            <input type="number" id="max" name="max" min="0" style="height: 35px" class="w-100">
+                         </div>
+
+                        <input class="btn btn-primary mt-3 w-50 mb-3" type="submit" onclick="filter()" value="Filter">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 pt-3 pb-3" style="background-color: lightgray">
+            {% if cars %}
+
+                {% for car in cars %}
+
+                    <div class="card px-2 mb-2 pt-2 pb-2 mx-2" style="width: 450px; display: inline-block">
+                        <img class="card-img-top" src="{% static car.image.url %}" alt="Card image"
+                             style="width:100%">
+                        <div class="card-body">
+                            <h4 class="card-title brd px-3" style="margin-left: -15px">{{ car.brand }}</h4>
+                            <h6 class="card-title brd px-3">{{ car.model }}</h6>
+
+                            <ul class="list-group list-group-flush">
+                                <label for=""><b>Capacity:</b> </label>
+                                <li class="cpt list-group-item">{{ car.capacity }}</li>
+                                <label for=""><b>Fuel:</b> </label>
+                                <li class="fl list-group-item">{{ car.fuelType }}</li>
+                                <label for=""><b>Gear:</b> </label>
+                                <li class="gr list-group-item">{{ car.gearType }}</li>
+                            </ul>
+                            <div class="mt-3">
+                             <div class="text-center inline w-70">
+                                <h3 style="display:inline" class="card-title  prc">{{ car.price }}</h3>
+                                <h6 style="display:inline">$ per day!</h6>
+                                <h1>{{ a }}</h1>
+                            </div>
+                                <a href="/reservations/rent/{{ car.id }}" class="btn btn-success w-25 inline" >Hire</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                {% endfor %}
+
+            {% else %}
+                <h1>there is no car you wanted</h1>
+            {% endif %}
+
+        </div>
+    </div>
+    </div>
+
+
+    <script>
+            function filter() {
+            var capacity, min, max, brand, model, gr, ft;
+            capacity = document.getElementById("capacity").value;
+            min = document.getElementById("min").value;
+            max = document.getElementById("max").value;
+            brand = document.getElementById("brand").value;
+            fuel = document.getElementById("fl").value;
+            gear = document.getElementById("gr").value;
+
+            var z = document.getElementsByClassName('card')
+
+            var a = document.getElementsByClassName('brd')
+            var b = document.getElementsByClassName('prc')
+            var c = document.getElementsByClassName('cpt')
+            var d = document.getElementsByClassName('fl')
+            var e = document.getElementsByClassName('gr')
+                console.log(a[0])
+
+
+            for (i = 0; i < z.length; i++) {
+                if ((capacity != '' && capacity != c[i].textContent) || (brand != '' && brand != a[i].textContent)
+                    || (fuel != '' && fuel != d[i].textContent) || (gear != '' && gear != e[i].textContent)
+                    || (min != '' && min > parseInt(b[i].textContent)) || (max != '' && max < parseInt(b[i].textContent))) {
+                    z[i].style.display = 'none'
+                } else {
+                    z[i].style.display = 'block'
+                }
+
+            }
+        }
+    </script>
+
+
+
+{% endblock %}
+

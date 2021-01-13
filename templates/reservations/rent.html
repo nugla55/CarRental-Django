@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="container pt-5">
+
+    <div class="alert alert-success">
+        <strong><h3>Your reservation has been created successfuly!</h3></strong>
+        <div class="row pt-3">
+            <div class="card">
+                <img src="{{ car.image }}" class="card-img-top" alt="car image!">
+                <div class="card-body">
+                    <h4> {{ car.brand }} {{ car.model }} </h4>
+                    <ul class="no-bullets">
+                        <li><b>pickup location:</b> {{ car.branch }}</li>
+                        <li><b>pickup date:</b> {{ takedate }}</li>
+                        <li><b>return date:</b> {{ givedate }}</li>
+                        <li><b>Daily price:</b> {{ car.price }}$ per day</li>
+                        <li><b>Total price:</b> {{ price }}$ total</li>
+                    </ul>
+                </div>
+            </div>
+
+            <a class="btn btn-warning mt-4 w-50" href="{% url 'home' %}"> &#8592; Back to Home Page</a>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
