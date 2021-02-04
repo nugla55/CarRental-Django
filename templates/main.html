@@ -25,6 +25,22 @@
             width: 80px;
             text-align: center;
         }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+
+            background: gainsboro;
+        }
+        ::-webkit-scrollbar-thumb:window-inactive {
+            background: rgba(255,0,0,0.4);
+        }
     </style>
 
 </head>
@@ -46,7 +62,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item margin-l-16">
-            <a class="nav-link" style="color: lightgray; font-size: larger" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+            {% if request.user.visitor.role == 'admin' %}
+                <a class="nav-link" style="color: lightgray; font-size: larger" href="{% url 'manage' %}">Home <span class="sr-only">(current)</span></a>
+            {% else %}
+                <a class="nav-link" style="color: lightgray; font-size: larger" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+            {% endif %}
         </li>
         <li class="nav-item margin-l-16">
             <a class="nav-link" style="color: lightgray; font-size: larger" href="{% url 'carlist' %}">Cars</a>
@@ -65,7 +85,7 @@
             <a class="btn fa fa-user-circle btn-user" href="{% url 'managerProfile' %}">Manager {{ user.username }}</a>
 
         {% elif request.user.visitor.role == 'admin' %}
-            <a class="btn fa fa-user-circle btn-user" href="{% url 'admin:index' %}">Admin {{ user.username }}</a>
+            <a class="btn fa fa-user-circle btn-user" href="#" >Admin {{ user.username }}</a>
 
         {% else %}
             <a class="btn fa fa-user-circle btn-user" href="{% url 'profile' %}"> {{ user.username }}</a>

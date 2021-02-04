@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_cleanup',
     'Accounts',
+    'phone_field',
 
 ]
 
@@ -89,7 +90,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -113,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Turkey'
 
 USE_I18N = True
 
@@ -145,4 +145,3 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'algunmandil56@gmail.com'
 EMAIL_HOST_PASSWORD = 'saafsdfa55'
-

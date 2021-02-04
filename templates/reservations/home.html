@@ -52,9 +52,17 @@
             <div class="row px-2 h-100" style="background-color: mediumpurple">
 
                     <h4 class="text-center pt-3">Search Car</h4>
-                    <form method="get" name="myForm" action="{% url 'filteredCarList' %}" onsubmit="return validateForm()">
+                    <form method="GET" name="myForm" action="{% url 'filteredCarList' %}" onsubmit="return validateForm()">
                         <div class="form-group">
                             {{ form|crispy }}
+
+                            <label for="branch">Location</label>
+                            <select class="w-100" style="height: 40px;border-radius: 5px" id="branch" name="branch">
+                                {% for branch in branches %}
+                                    <option> {{ branch.place }}</option>
+                                {% endfor %}
+                            </select>
+
                         </div>
                         <input class="btn btn-submit" type="submit" value="Find Car!">
                     </form>

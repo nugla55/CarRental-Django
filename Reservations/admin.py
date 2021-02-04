@@ -18,7 +18,7 @@ admin.site.register(Branch, BranchAdmin)
 
 class CarAdmin(admin.ModelAdmin):
     list_display = ['brand', 'model', 'isReserved', 'isActive', 'buyingDate']
-    list_display_links = ['brand', 'model', 'isReserved', 'isActive', 'buyingDate']
+    list_display_links = ['brand', 'model' , 'isReserved', 'isActive', 'buyingDate']
     list_filter = ['brand', 'model', 'isReserved', 'isActive', 'buyingDate']
     search_fields = ['brand', 'model', 'isReserved', 'isActive', 'buyingDate']
 

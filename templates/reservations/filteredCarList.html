@@ -6,18 +6,9 @@
         <div class="col-sm-3">
             <div class="container">
                 <div class="row">
+                    <a class="btn btn-warning fa fa-arrow-left mb-3 w-100 mt-2" href="{% url 'home' %}"> Back</a>
                     <div class="col-md-6 col-md-offset-3 w-100 " style="background-color: mediumpurple">
                         <h1>Filter</h1>
-
-                        <div class="form-group w-100 " style="height: 60px;">
-                            <label for="gr">dsaasd type:</label><br>
-                            <select type="text" id="gr" name="gr" class="w-100" style="height: 35px">
-                                <option selected></option>
-                                <option>ads</option>
-                                <option>Maqwenuel</option>
-                                <option>hgjgh</option>
-                            </select>
-                        </div>
 
                         <div class="form-group w-100 " style="height: 60px;">
                             <label for="gr">Gear Type:</label><br>
@@ -91,7 +82,7 @@
                                 <h6 style="display:inline">$ per day!</h6>
                                 <h1>{{ a }}</h1>
                             </div>
-                                <a href="/reservations/rent/{{ car.id }}" class="btn btn-success w-25 inline" >Hire</a>
+                                <a href="/reservations/payment/{{ car.id }}" class="btn btn-success w-25 inline" >Hire</a>
                             </div>
                         </div>
                     </div>
@@ -100,7 +91,8 @@
                 {% endfor %}
 
             {% else %}
-                <h1>there is no car you wanted</h1>
+                <h1>Oh nooo!</h1>
+                <h3><em> There is no car you wanted</em> </h3>
             {% endif %}
 
         </div>
@@ -134,7 +126,7 @@
                     || (min != '' && min > parseInt(b[i].textContent)) || (max != '' && max < parseInt(b[i].textContent))) {
                     z[i].style.display = 'none'
                 } else {
-                    z[i].style.display = 'block'
+                    z[i].style.display = 'inline-block'
                 }
 
             }

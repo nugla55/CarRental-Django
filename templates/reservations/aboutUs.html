@@ -1,32 +1,40 @@
 {% extends 'main.html' %}
 {% load static %}
-
 {% block content %}
+    <style>
+        a {
+            color: orange;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
     <div class="container pt-3 pb-3 ">
         <div class="row mt-4 mb-4 " style="background-color: mediumpurple">
             <div class="col-lg-4 pt-4" style="height: 300px; background-color: mediumpurple">
                 <img src="{% static 'images/roadtrip.png' %}" style="max-height: 100%; max-width: 100%">
             </div>
             <div class="col-lg-8 pt-3 pb-3" style="height: 300px">
-                <h3 class="px-5">WHO ARE WE</h3>
-                <p class="px-3">deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme</p>
+                <h2 class="px-5">WHO ARE WE</h2>
+                <p class="px-3" style="font-size: 20px">2020 yılında bir proje için kurulmuş olan Rent&Rest, şu an
+                    Türkiye'nin en hızlı yükselen araç kiralama sitesi konumundadır. Araçlarımızın kalitesi ve
+                    fiyatlarımızın uygunluğu ile memnun müşteri sayımız her gün artmaktadır. Türkiye'de sizi yalnız
+                    bırakmayan Rent&Rest, çok yakında yurt
+                    dışında da büyük şehirlerde sizinle birlikte. Bizi tercih ettiğiniz için çok teşekkür ederiz. </p>
             </div>
         </div>
 
         <div class="row mt-4 mb-4" style="background-color: mediumpurple">
             <div class="col-lg-8 pt-3 pb-3" style="height: 300px">
-                <h3 class="px-5">Our Visions</h3>
-                <p class="px-3">deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme</p>
+                <h2 class="px-5">Our Branches</h2>
+                <p class="px-3" style="font-size: 20px">Şu anda İstanbul, Eskişehir, Ankara, Bursa, Adana, Samsun
+                    illerinde birer şube olmak
+                    üzere 6 farklı şubeyle hizmet vermekteyiz. Şubelerimizin iletişim bilgileri için <a
+                            href="http://127.0.0.1:8000/reservations/contact/">contact us </a> sayfasına gidebilirsiniz.
+                </p>
             </div>
             <div class="col-lg-4 pt-4" style="height: 300px">
                 <img src="{% static 'images/roadtrip2.png' %}" style="max-height: 100%; max-width: 100%">
@@ -38,13 +46,13 @@
                 <img src="{% static 'images/roadtrip3.png' %}" style="max-height: 100%; max-width: 100%">
             </div>
             <div class="col-lg-8 pt-3 pb-3" style="height: 300px">
-                <h3 class="px-5">Our Missions</h3>
-                <p class="px-3">deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme
-                 deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme</p>
+                <h2 class="px-5">Contact</h2>
+                <p class="px-3" style="font-size: 20px"><strong>Address : </strong> Rastgele Mah. Örnek Cad.
+                    Kadıköy/İstanbul <br>
+                    <strong>Mail : </strong> <a href="mailto: rent&rest@hotmail.com" >rent&rest@hotmail.com</a>
+                    <br>
+                    <strong>Telephone : </strong> 05050000000
+                </p>
             </div>
         </div>
     </div>

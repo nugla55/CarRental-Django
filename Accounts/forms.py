@@ -9,6 +9,64 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 from Reservations.models import Visitor
 
+from django.forms import ModelForm
+
+from Reservations.models import Car, Branch
+
+
+class AddManagerForm(ModelForm):
+    class Meta:
+        model = Visitor
+        fields = "__all__"
+
+
+class ManagerAddCarForm(ModelForm):
+    class Meta:
+        model = Car
+        fields = (
+            'brand', 'model', 'gearType', 'fuelType', 'capacity', 'price', 'image',)
+
+
+class AddCarForm(ModelForm):
+    class Meta:
+        model = Car
+        fields = (
+            'brand', 'model', 'gearType', 'fuelType', 'capacity', 'price', 'branch', 'image',)
+
+
+class AddBranchForm(ModelForm):
+    manager = forms.ModelChoiceField(queryset=Visitor.objects.filter(role='manager'), required=True)
+
+    class Meta:
+        model = Branch
+        fields = "__all__"
+
+
+class ManageBranchForm(ModelForm):
+    manager = forms.ModelChoiceField(queryset=Visitor.objects.filter(role='manager'), required=True)
+
+    class Meta:
+        model = Branch
+        fields = ('manager', 'adress', 'phone', 'mail', 'fax')
+
+
+class CarForm(ModelForm):
+    class Meta:
+        model = Car
+        fields = ('brand', 'model', 'gearType', 'fuelType', 'capacity', 'price', 'image')
+        labels = {
+            'brand': _('brand'),
+            'model': _('model'),
+            'gearType': _('gearType'),
+            'fuelType': _('fuelType'),
+            'capacity': _('capacity'),
+            'price': _('price'),
+
+        }
+        widgets = {
+            'image': FileInput
+        }
+
 
 class SignupForm(UserCreationForm):
     email = forms.EmailField()
@@ -49,4 +107,4 @@ class VisitorForm(ModelForm):
 
 
 class LoginForm(AuthenticationForm):
-    email = forms.EmailField(label='Email')
+    email = forms.EmailField(label='Email', required=True)

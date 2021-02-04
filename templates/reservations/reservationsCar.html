@@ -13,6 +13,7 @@
                     <th scope="col">Reservation Date</th>
                     <th scope="col">Pick-up Date</th>
                     <th scope="col">Return Date</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -21,10 +22,13 @@
                         <td>{{ reservation.reservationDate }}</td>
                         <td>{{ reservation.receiveDate }}</td>
                         <td>{{ reservation.deliveryDate }}</td>
+                        <td><a href="{% url 'cancelBook' reservation.id %}" class="btn btn-danger">Cancel</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+
+        <a class="btn btn-warning fa fa-arrow-left mt-3" href="{% url 'managerProfile' %}"> Back</a>
     </div>
 
 {% endblock %}
